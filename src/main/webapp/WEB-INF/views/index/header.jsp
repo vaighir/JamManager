@@ -18,9 +18,9 @@
 	      <a class="navbar-brand" href="${pageContext.request.contextPath}">JAM MANAGER</a>
 	    </div>
 	    <ul class="nav navbar-nav">
-	      <li><a href="#">Users</a></li>
-	      <li><a href="#">Jams</a></li>
-	      <li><a href="#">Page 3</a></li>
+	      <li><a href="${pageContext.request.contextPath}/usermanagement">Users</a></li>
+	      <li><a href="${pageContext.request.contextPath}/jams">Jams</a></li>
+	      <li><a href="${pageContext.request.contextPath}/cities">Cities</a></li>
 	    </ul>
 	    <ul class="nav navbar-nav navbar-right">
 	      <li><a href="signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>

@@ -25,6 +25,9 @@ public class SecurityAppConfiguration extends WebSecurityConfigurerAdapter  {
 //		}
 		
 		manager.createUser(User.withUsername("admin").password("password").roles("ADMIN").build());
+		manager.createUser(User.withUsername("user1").password("password").roles("USER").build());
+		manager.createUser(User.withUsername("user2").password("password").roles("USER").build());
+		manager.createUser(User.withUsername("user3").password("password").roles("USER").build());
 
 		
 		return manager;
@@ -41,7 +44,8 @@ public class SecurityAppConfiguration extends WebSecurityConfigurerAdapter  {
 				.antMatchers("/resources/**").permitAll()
 				.antMatchers("/").permitAll()
 				.antMatchers("/usermanagement/**").hasRole("ADMIN")
-//				.antMatchers("/jams/**").hasAnyRole("ADMIN", "USER")  
+				.antMatchers("/jams/**").hasAnyRole("ADMIN", "USER") 
+				.antMatchers("/cities/**").hasAnyRole("ADMIN", "USER")  
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()
