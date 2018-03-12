@@ -2,9 +2,12 @@ package com.jammanager.controller;
 
 import java.util.Collection;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,7 +29,7 @@ public class UserManagementController {
 		return "usermanagement/all";
 	}
 	
-	@GetMapping(path = "/user/delete")
+	@GetMapping(path = "/usermanagement/delete")
 	public String showDeleteConfirmForm(@RequestParam(name = "id", required = true) long id, Model model) {
 				
 		User user = userRepository.findOne(id);
@@ -36,10 +39,52 @@ public class UserManagementController {
 		return "usermanagement/delete";
 	}
 	
-	@PostMapping(path = "jam/delete")
+	@PostMapping(path = "/usermanagement/delete")
 	public String deleteUser(final @RequestParam(name = "id", required = true) long id) {
 		
 		userRepository.delete(id);
+		
+		return "redirect:all";
+	}
+	
+	@GetMapping(path = "/usermanagement/add")
+	public String showAddUserForm(Model model) {
+
+		User user = new User();
+		model.addAttribute("user", user);
+
+		return "usermanagement/add";
+	}
+
+	@PostMapping(path = "/usermanagement/add")
+	public String processAddUserForm(@Valid User user, BindingResult bresult) {
+
+		if(bresult.hasErrors()) {
+			return "usermanagement/add";
+		}
+				
+		userRepository.save(user);
+
+		return "redirect:all";
+	}
+	
+	@GetMapping(path = "/usermanagement/edit")
+	public String showEditForm(@RequestParam(name = "id", required = true) long id, Model model) {
+
+		User user = userRepository.findOne(id);
+		
+		model.addAttribute("user", user);
+		return "usermanagement/edit";
+	}
+
+	@PostMapping(path = "/usermanagement/edit")
+	public String editUser(@Valid User user, final BindingResult bresult) {
+		
+		if(bresult.hasErrors()) {
+			return "usermanagement/edit";
+		}
+				
+		userRepository.save(user);
 		
 		return "redirect:all";
 	}

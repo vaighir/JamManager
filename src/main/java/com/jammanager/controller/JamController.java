@@ -21,14 +21,8 @@ import com.jammanager.repository.JamRepository;
 @Controller
 public class JamController {
 
-//	@Autowired
-//	private UserRepository userRepository;
-
 	@Autowired
 	private JamRepository jamRepository;
-
-//	@Autowired
-//	private CityRepository cityRepository;
 
 	@Autowired
 	private CommentRepository commentRepository;
@@ -102,17 +96,5 @@ public class JamController {
 		
 		return "redirect:all";
 	}
-
-//	@ModelAttribute("users")
-//	public Collection<User> users() {
-//		Collection<User> users = userRepository.findAll();
-//		return users;
-//	}
-//
-//	@ModelAttribute("cities")
-//	public Collection<City> cities() {
-//		Collection<City> cities = cityRepository.findAll();
-//		return cities;
-//	}
 
 }
