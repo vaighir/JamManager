@@ -28,8 +28,8 @@ public class Comment {
 	@JoinColumn(name = "user_id")
 	private User user;
     
-//    @ManyToOne
-//    private Jam jam;
+    @ManyToOne
+    private Jam jam;
     
 
 	public long getId() {

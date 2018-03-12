@@ -43,6 +43,7 @@ public class SecurityAppConfiguration extends WebSecurityConfigurerAdapter  {
 			.authorizeRequests()
 				.antMatchers("/resources/**").permitAll()
 				.antMatchers("/").permitAll()
+				.antMatchers("/user/signup").permitAll()
 				.antMatchers("/usermanagement/**").hasRole("ADMIN")
 				.antMatchers("/jam/**").hasAnyRole("ADMIN", "USER") 
 				.antMatchers("/city/**").hasAnyRole("ADMIN", "USER")

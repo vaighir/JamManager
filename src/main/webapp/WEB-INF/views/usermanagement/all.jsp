@@ -9,7 +9,7 @@
 </head>
 <body>
   <h2>User management</h2>
-  <%@ include file="../index/footer.jsp" %>
+  <%@ include file="../footer.jsp" %>
   
 </body>
 </html>

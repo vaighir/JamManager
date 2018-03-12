@@ -18,13 +18,12 @@
 	      <a class="navbar-brand" href="${pageContext.request.contextPath}">JAM MANAGER</a>
 	    </div>
 	    <ul class="nav navbar-nav">
-	      <li><a href="${pageContext.request.contextPath}/usermanagement">Users</a></li>
+	      <li><a href="${pageContext.request.contextPath}/usermanagement">User management</a></li>
 	      <li><a href="${pageContext.request.contextPath}/jam">Jams</a></li>
 	      <li><a href="${pageContext.request.contextPath}/city">Cities</a></li>
 	    </ul>
 	    <ul class="nav navbar-nav navbar-right">
-	      <li><a href="signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-	      <li><a href="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+	      <li><a href="logout"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
 	    </ul>
 	  </div>
 	</nav>
