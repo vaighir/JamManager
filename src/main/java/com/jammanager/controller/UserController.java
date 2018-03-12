@@ -1,5 +1,7 @@
 package com.jammanager.controller;
 
+import java.util.Collection;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,10 +9,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.jammanager.entity.City;
+import com.jammanager.entity.Instrument;
 import com.jammanager.entity.User;
+import com.jammanager.repository.CityRepository;
+import com.jammanager.repository.InstrumentRepository;
 import com.jammanager.repository.UserRepository;
 
 @Controller
@@ -18,6 +25,12 @@ public class UserController {
 
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private CityRepository cityRepository;
+	
+	@Autowired
+	private InstrumentRepository instrumentRepository;
 	
 	@GetMapping(path = "/user/login")
 	public String showLoginForm() {
@@ -29,7 +42,6 @@ public class UserController {
 //		return "user/success";
 //	}
 	
-	//poprawić, żeby id bylo ukryte
 	@GetMapping(path = "/user/edit/")
 	public String edit(final @RequestParam(name = "id", required = true) long id, final Model model) {
 		
@@ -58,4 +70,15 @@ public class UserController {
 		return "user/success";
 	}
 	
+	@ModelAttribute("cities")
+	public Collection<City> cities() {
+		Collection<City> cities = cityRepository.findAll();
+		return cities;
+	}
+	
+	@ModelAttribute("instruments")
+	public Collection<Instrument> instruments() {
+		Collection<Instrument> instruments = instrumentRepository.findAll();
+		return instruments;
+	}
 }

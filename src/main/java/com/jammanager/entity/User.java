@@ -61,7 +61,7 @@ public class User {
 	@JoinTable(name = "users_instruments",
 	joinColumns = @JoinColumn(name = "user_id"),
 	inverseJoinColumns = @JoinColumn(name = "instrument_id"))
-	private List<Intrument> instruments;
+	private List<Instrument> instruments;
 	
 	@ManyToMany
 	@JoinTable(name = "jams_users",

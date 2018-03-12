@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "instruments")
-public class Intrument {
+public class Instrument {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
