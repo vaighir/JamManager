@@ -1,0 +1,10 @@
+.sidebar {
+	text-align: center;
+	text-transform: uppercase;
+	margin-bottom: -101%;
+  	padding-bottom: 101%; 
+}
+
+.float-right {
+	float: right;
+}
