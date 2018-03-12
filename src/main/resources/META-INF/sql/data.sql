@@ -1,14 +1,6 @@
 insert into roles(name) value("admin");
 insert into roles(name) value("user");
 
-insert into users(email, password, username) value("mail@mail.com", "password", "admin");
-insert into users(email, password, username) value("user1@mail.com", "password", "user1");
-insert into users(email, password, username) value("user2@mail.com", "password", "user2");
-
-insert into users_roles(user_id, role_id) value(1, 1);
-insert into users_roles(user_id, role_id) value(2, 2);
-insert into users_roles(user_id, role_id) value(3, 2);
-
 insert into instruments(name) value("drums");
 insert into instruments(name) value("guitar");
 insert into instruments(name) value("bass");
@@ -33,3 +25,13 @@ insert into cities(name) value("Köln");
 insert into cities(name) value("Düsseldorf");
 
 insert into cities(name) value("Praha");
+
+insert into users(email, password, username) value("mail@mail.com", "password", "admin");
+insert into users(email, password, username, city_id) value("user1@mail.com", "password", "user1", 2);
+insert into users(email, password, username, city_id) value("user2@mail.com", "password", "user2", 2);
+
+insert into users_roles(user_id, role_id) value(1, 1);
+insert into users_roles(user_id, role_id) value(2, 2);
+insert into users_roles(user_id, role_id) value(3, 2);
+
+
