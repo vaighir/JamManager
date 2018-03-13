@@ -1,9 +1,8 @@
 package com.jammanager.controller;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -37,10 +36,10 @@ public class JamController {
 
 	@Autowired
 	private CommentRepository commentRepository;
-	
+
 	@Autowired
 	private CityRepository cityRepository;
-	
+
 	@Autowired
 	private UserRepository userRepository;
 
@@ -68,15 +67,13 @@ public class JamController {
 			return "jam/add";
 		}
 
-		//TODO read user from session
 		User user = loadUserFromAuthentication();
-		//add user as founder
-		
+		jam.setFounder(user);
 		jamRepository.save(jam);
 
 		return "redirect:all";
 	}
-	
+
 	@GetMapping(path = "/jam/edit/{id}")
 	public String showEditJamForm(@PathVariable(name = "id", required = true) long id, Model model) {
 
@@ -107,89 +104,108 @@ public class JamController {
 		Collection<User> participants = jam.getUsers();
 		Comment comment = new Comment();
 		comment.setJam(jam);
-		
-		//TODO
-		//load user from session
+
 		User user = loadUserFromAuthentication();
-		//if user is already a participant, add "hide join button"
+		List<User> users = jam.getUsers();
+
+		for (User u : users) {
+			if (u.equals(user)) {
+				String msg = "hideButton";
+				model.addAttribute("msg", msg);
+			}
+		}
 		
 		model.addAttribute("comment", comment);
 		model.addAttribute("founder", founder);
 		model.addAttribute("participants", participants);
 		model.addAttribute("comments", comments);
 		model.addAttribute("jam", jam);
+		
 		return "jam/jam";
 	}
-	
+
 	@PostMapping(path = "/jam/{id}/join")
 	public String joinJam(@PathVariable(name = "id", required = true) long id, Model model) {
-		//TODO
-		//read user from session
+
+		Jam jam = jamRepository.findOne(id);
 		User user = loadUserFromAuthentication();
-		//if user == founder
-		//return "can't join your own jam session"
-		//if user is already a participant
-		//return "you've already joined this jam"
-		//else add user to participants
-		return "jam/jam";
+
+		if (user == jam.getFounder()) {
+			String msg = "You cannot join your own jam session";
+			model.addAttribute("msg", msg);
+			return "error/custom";
+		}
+
+		List<User> users = jam.getUsers();
+
+		for (User u : users) {
+			if (u.equals(user)) {
+				String msg = "You've already joined this jam";
+				model.addAttribute("msg", msg);
+				return "error/custom";
+			}
+		}
+
+		users.add(user);
+		jam.setUsers(users);
+		return "redirect:../jam/" + id;
 	}
 
 	@PostMapping(path = "/jam/comment")
 	public String commentJam(@Valid Comment comment, BindingResult bresult) {
-		DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
 		Date dateTime = new Date();
+		User user = loadUserFromAuthentication();
+		comment.setUser(user);
 		comment.setDateTime(dateTime);
-		
-		Jam jam = comment.getJam();	
+
+		Jam jam = comment.getJam();
 		commentRepository.save(comment);
 
 		return "redirect:../jam/" + jam.getId();
 	}
-	
+
 	@GetMapping(path = "/jam/delete/{id}")
 	public String showDeleteConfirmForm(@PathVariable(name = "id", required = true) long id, Model model) {
-				
+
 		Jam jam = jamRepository.findOne(id);
-		
 		model.addAttribute("jam", jam);
-		
-		//TODO read user from session
+
 		User user = loadUserFromAuthentication();
-		//if user == founder
-		
-		return "jam/delete";
-		//if user != founder; redirect403
+		if (user == jam.getFounder()) {
+			return "jam/delete";
+		} else {
+			return "error/403";
+		}
 	}
-	
+
 	@PostMapping(path = "jam/delete")
 	public String deleteJam(final @RequestParam(name = "id", required = true) long id) {
-		
+
 		jamRepository.delete(id);
-		
 		return "redirect:all";
 	}
-	
+
 	@ModelAttribute("cities")
 	public Collection<City> cities() {
 		Collection<City> cities = cityRepository.findAll();
-		
+
 		for (City c : cities) {
-	        c.getJams();
+			c.getJams();
 		}
-		
+
 		return cities;
 	}
-	
+
 	private User loadUserFromAuthentication() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (!(authentication instanceof AnonymousAuthenticationToken)) {
-		    String currentUserName = authentication.getName();
+			String currentUserName = authentication.getName();
 			User user = userRepository.findByUsername(currentUserName);
 			return user;
 		} else {
 			return null;
 		}
-		
+
 	}
 
 }

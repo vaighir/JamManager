@@ -34,6 +34,14 @@
 			<p>${jam.description }</p>
 
 			<h3>Participants</h3>
+			<ul>
+				<li>${jam.founder.username }</li>
+				<c:forEach items="${users}" var="user">
+
+					<li>${user.username }</li>
+
+				</c:forEach>
+			</ul>
 			<a href="">Join!</a>
 
 
@@ -60,7 +68,7 @@
 						<td>${comment.text }</td>
 					</tr>
 					<tr>
-						<td>${comment.user }</td>
+						<td>${comment.user.username }</td>
 					</tr>
 				</table>
 			</c:forEach>
