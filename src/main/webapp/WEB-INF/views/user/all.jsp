@@ -12,7 +12,7 @@
 
 	<div class="row">
 		<div class="col-sm-2">
-			<%@ include file="sidebar.jsp"%>
+		<%-- <%@ include file="sidebar.jsp"%> --%>	
 		</div>
 		<div class="col-sm-10">
 			<h2>Users list</h2>
@@ -20,7 +20,6 @@
 				<tr>
 					<th>Username</th>
 					<th>City</th>
-					<th>Instruments</th>
 					<th>Details</th>
 				</tr>
 				
@@ -28,8 +27,7 @@
 					<tr>
 						<td>${user.username}</td>
 						<td>${user.city}</td>
-						<td><c:forEach items="${user.instruments}" var="instrument">${instrument.name}<br />
-							</c:forEach></td>
+						
 						<td><a href="<c:url value='details?id=${user.id}'/>">Details</a></td>
 					</tr>
 				</c:forEach>

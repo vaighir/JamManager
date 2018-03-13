@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -63,7 +64,7 @@ public class User {
 	inverseJoinColumns = @JoinColumn(name = "instrument_id"))
 	private List<Instrument> instruments;
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "jams_users",
 	joinColumns = @JoinColumn(name = "user_id"),
 	inverseJoinColumns = @JoinColumn(name = "jam_id"))
@@ -179,13 +180,13 @@ public class User {
 		this.outbox = outbox;
 	}
 
-//	public List<String> getInstruments() {
-//		return instruments;
-//	}
-//
-//	public void setInstruments(List<String> instruments) {
-//		this.instruments = instruments;
-//	}
+	public List<Instrument> getInstruments() {
+		return instruments;
+	}
+
+	public void setInstruments(List<Instrument> instruments) {
+		this.instruments = instruments;
+	}
 
 	public List<Jam> getJams() {
 		return jams;
@@ -213,10 +214,10 @@ public class User {
 
 	
 	
-//	@Override
-//	public String toString() {
-//		return "User [id=" + id + ", username=" + username + ", firstName=" + firstName + ", lastName=" + lastName
-//				+ ", email=" + email + ", city=" + city + ", instruments=" + instruments + "]";
-//	}
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", email=" + email + ", city=" + city + "]";
+	}
 	
 }

@@ -29,5 +29,7 @@
   </f:form>
   <script type="text/javascript" src="<c:url value="/resources/js/jquery.validate.min.js"/>"></script>
   <script type="text/javascript" src="<c:url value="/resources/js/user/signup.js"/>"></script>
+  <%@ include file="../footer.jsp"%>
+  
 </body>
 </html>

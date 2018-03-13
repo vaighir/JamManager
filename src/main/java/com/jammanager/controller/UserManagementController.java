@@ -9,10 +9,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.jammanager.entity.City;
+import com.jammanager.entity.Instrument;
 import com.jammanager.entity.User;
+import com.jammanager.repository.CityRepository;
+import com.jammanager.repository.InstrumentRepository;
 import com.jammanager.repository.UserRepository;
 
 @Controller
@@ -20,6 +26,12 @@ public class UserManagementController {
 	
 	@Autowired
 	private UserRepository userRepository;
+
+	@Autowired
+	private CityRepository cityRepository;
+	
+	@Autowired
+	private InstrumentRepository instrumentRepository;
 	
 	@GetMapping(path = "/usermanagement")
 	public String showLoginForm(Model model) {
@@ -68,10 +80,11 @@ public class UserManagementController {
 		return "redirect:all";
 	}
 	
-	@GetMapping(path = "/usermanagement/edit")
-	public String showEditForm(@RequestParam(name = "id", required = true) long id, Model model) {
+	@GetMapping(path = "/usermanagement/edit/{id}")
+	public String showEditForm(@PathVariable(name = "id", required = true) long id, Model model) {
 
 		User user = userRepository.findOne(id);
+		user.getCity().getJams();		
 		
 		model.addAttribute("user", user);
 		return "usermanagement/edit";
@@ -87,5 +100,23 @@ public class UserManagementController {
 		userRepository.save(user);
 		
 		return "redirect:all";
+	}
+	
+	
+	@ModelAttribute("cities")
+	public Collection<City> cities() {
+		Collection<City> cities = cityRepository.findAll();
+		
+		for (City c : cities) {
+	        c.getJams();
+		}
+		
+		return cities;
+	}
+	
+	@ModelAttribute("instruments")
+	public Collection<Instrument> instruments() {
+		Collection<Instrument> instruments = instrumentRepository.findAll();
+		return instruments;
 	}
 }
