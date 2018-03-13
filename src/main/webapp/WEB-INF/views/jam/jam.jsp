@@ -43,7 +43,7 @@
 				<div>
 					<f:textarea path="text" name="text" cols="30" rows="4" />
 				</div>
-				<f:hidden path="jam" value="${jam.id }" />
+				<f:hidden path="jam" value="${jam.id}" />
 				<div>
 					<input type="submit" value="Send" />
 				</div>

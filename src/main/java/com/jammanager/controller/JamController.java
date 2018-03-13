@@ -122,20 +122,16 @@ public class JamController {
 	}
 
 	@PostMapping(path = "/jam/comment")
-	public String commentJam(@Valid Comment comment, @RequestParam(name = "jam", required = true) Jam jam, Model model) {
-//		Jam jam = jamRepository.findOne(id);
-//		comment.setJam(jam);
+	public String commentJam(@Valid Comment comment, BindingResult bresult, Model model) {
+		
 		java.util.Date utilDate = new java.util.Date();
 		java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
 		comment.setDate(sqlDate);
 		
+		Jam jam = comment.getJam();	
 		commentRepository.save(comment);
 
-		Collection<Comment> comments = commentRepository.findAllByJam(jam);
-
-		model.addAttribute("comments", comments);
-		model.addAttribute("jam", jam);
-		return "redirect:jam";
+		return "redirect:../jam/" + jam.getId();
 	}
 	
 	@GetMapping(path = "/jam/delete/{id}")

@@ -26,6 +26,12 @@ public class CityController {
 	@Autowired
 	private CityRepository cityRepository;
 	
+	@GetMapping(path = "/city")
+	public String redirect() {
+		
+		return "redirect:city/all";
+	}
+	
 	@GetMapping(path = "/city/all")
 	public String showAllCities(Model model) {
 		Collection<City> cities = cityRepository.findAll();
