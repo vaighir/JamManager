@@ -28,7 +28,7 @@
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 			<li><a href="${pageContext.request.contextPath}/user/edit"><span class="glyphicon glyphicon-user"></span>Edit account</a></li>
-			<li><a href="${pageContext.request.contextPath}/user/logout"><span class="glyphicon glyphicon-log-out"></span>Log out</a></li>
+			<li><a href="<c:url value="/logout" />"><span class="glyphicon glyphicon-log-out"></span>Log out</a></li>
 		</ul>
 	</div>
 	</nav>
