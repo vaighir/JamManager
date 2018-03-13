@@ -57,7 +57,7 @@ public class CityController {
 		
 		model.addAttribute("jams", jams);
 		model.addAttribute("city", city);
-		return "city/users";
+		return "city/jams";
 	}
 	
 }

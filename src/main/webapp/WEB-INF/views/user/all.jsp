@@ -12,25 +12,28 @@
 
 	<div class="row">
 		<div class="col-sm-2">
-		<%-- <%@ include file="sidebar.jsp"%> --%>	
+			<%-- <%@ include file="sidebar.jsp"%> --%>
 		</div>
 		<div class="col-sm-10">
 			<h2>Users list</h2>
-			<table>
-				<tr>
-					<th>Username</th>
-					<th>City</th>
-					<th>Details</th>
-				</tr>
-				
-				<c:forEach items="${users}" var="user">
+			<table class="table table-hover">
+				<thead class="thead-inverse">
 					<tr>
-						<td>${user.username}</td>
-						<td>${user.city}</td>
-						
-						<td><a href="<c:url value='details?id=${user.id}'/>">Details</a></td>
+						<th>Username</th>
+						<th>City</th>
+						<th>Details</th>
 					</tr>
-				</c:forEach>
+				</thead>
+				<tbody>
+					<c:forEach items="${users}" var="user">
+						<tr>
+							<td>${user.username}</td>
+							<td>${user.city}</td>
+
+							<td><a href="<c:url value='details?id=${user.id}'/>">Details</a></td>
+						</tr>
+					</c:forEach>
+				</tbody>
 			</table>
 
 		</div>

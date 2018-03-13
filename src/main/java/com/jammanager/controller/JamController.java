@@ -122,7 +122,7 @@ public class JamController {
 	}
 
 	@PostMapping(path = "/jam/comment")
-	public String commentJam(@Valid Comment comment, BindingResult bresult, Model model) {
+	public String commentJam(@Valid Comment comment, BindingResult bresult) {
 		
 		java.util.Date utilDate = new java.util.Date();
 		java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());

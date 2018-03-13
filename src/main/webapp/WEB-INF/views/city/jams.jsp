@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Cities</title>
+<title>Jams in ${city.name }</title>
 </head>
 <body>
 
@@ -15,28 +15,31 @@
 			<%@ include file="sidebar.jsp"%>
 		</div>
 		<div class="col-sm-10">
-			<h2>Cities</h2>
+			<h2>Jams in ${city.name }</h2>
 			<table class="table table-hover">
 				<thead class="thead-inverse">
 					<tr>
-						<th>Name</th>
-						<th>Users</th>
-						<th>Jams</th>
+						<th>Date</th>
+						<th>Place</th>
+						<th>Details</th>
+
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${cities}" var="city">
+					<c:forEach items="${jams}" var="jam">
 						<tr>
-							<td><b>${city.name}:</b></td>
+							<td>${jam.date}</td>
+							<td>${jam.place}</td>
 
 							<td><a
-								href="${pageContext.request.contextPath}/city/${city.id}/users">Users in ${city.name }</a></td>
-							<td><a
-								href="${pageContext.request.contextPath}/city/${city.id}/jams">Jams in ${city.name }</a></td>
+								href="${pageContext.request.contextPath}/jam/${jam.id}">Details</a></td>
+
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
+			<a href="${pageContext.request.contextPath}/jam/add">Add a new
+				jam</a>
 
 		</div>
 	</div>

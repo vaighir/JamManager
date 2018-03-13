@@ -16,29 +16,36 @@
 		</div>
 		<div class="col-sm-10">
 			<h2>Jams</h2>
-			<table>
-				<tr>
-					<th>Date</th>
-					<th>City</th>
-					<th>Place</th>
-					<th>Details</th>
-					<th>Edit</th>
-					<th>Delete</th>
-				</tr>
-
-				<c:forEach items="${jams}" var="jam">
+			<table class="table table-hover">
+				<thead class="thead-inverse">
 					<tr>
-						<td>${jam.date}</td>
-						<td>${jam.city.name}</td>
-						<td>${jam.place}</td>
-						
-						<td><a href="${pageContext.request.contextPath}/jam/${jam.id}">Details</a></td>
-						<td><a href="${pageContext.request.contextPath}/jam/edit/${jam.id}">Edit</a></td>
-						<td><a href="${pageContext.request.contextPath}/jam/delete/${jam.id}">Delete</a></td>
+						<th>Date</th>
+						<th>City</th>
+						<th>Place</th>
+						<th>Details</th>
+						<th>Edit</th>
+						<th>Delete</th>
 					</tr>
-				</c:forEach>
+				</thead>
+				<tbody>
+					<c:forEach items="${jams}" var="jam">
+						<tr>
+							<td>${jam.date}</td>
+							<td>${jam.city.name}</td>
+							<td>${jam.place}</td>
+
+							<td><a
+								href="${pageContext.request.contextPath}/jam/${jam.id}">Details</a></td>
+							<td><a
+								href="${pageContext.request.contextPath}/jam/edit/${jam.id}">Edit</a></td>
+							<td><a
+								href="${pageContext.request.contextPath}/jam/delete/${jam.id}">Delete</a></td>
+						</tr>
+					</c:forEach>
+				</tbody>
 			</table>
-  			<a  href="${pageContext.request.contextPath}/jam/add">Add a new jam</a>
+			<a href="${pageContext.request.contextPath}/jam/add">Add a new
+				jam</a>
 
 		</div>
 	</div>
