@@ -1,7 +1,6 @@
 package com.jammanager.entity;
 
-import java.sql.Date;
-import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "comments")
@@ -20,7 +21,9 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	private Date date;
+	
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateTime;
 	
     @Column(columnDefinition="TEXT")
 	private String text;
@@ -41,12 +44,12 @@ public class Comment {
 		this.id = id;
 	}
 
-	public Date getDate() {
-		return date;
+	public Date getDateTime() {
+		return dateTime;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setDateTime(Date dateTime) {
+		this.dateTime = dateTime;
 	}
 
 	public String getText() {
@@ -75,7 +78,7 @@ public class Comment {
 
 	@Override
 	public String toString() {
-		return "Comment [id=" + id + ", time=" + date + ", text=" + text + ", user=" + user + "]";
+		return "Comment [id=" + id + ", time=" + dateTime + ", text=" + text + ", user=" + user + "]";
 	}
 
     

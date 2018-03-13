@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="f" uri="http://www.springframework.org/tags/form"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ include file="../header.jsp"%>
 
@@ -53,7 +53,8 @@
 			<c:forEach items="${comments}" var="comment">
 				<table>
 					<tr>
-						<th>${comment.date }</th>
+						<th><fmt:formatDate pattern="yyyy-MM-dd hh:mm"
+								value="${comment.dateTime }" /></th>
 					</tr>
 					<tr>
 						<td>${comment.text }</td>

@@ -1,10 +1,16 @@
 package com.jammanager.controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
+import java.util.Date;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,6 +27,7 @@ import com.jammanager.entity.User;
 import com.jammanager.repository.CityRepository;
 import com.jammanager.repository.CommentRepository;
 import com.jammanager.repository.JamRepository;
+import com.jammanager.repository.UserRepository;
 
 @Controller
 public class JamController {
@@ -33,6 +40,9 @@ public class JamController {
 	
 	@Autowired
 	private CityRepository cityRepository;
+	
+	@Autowired
+	private UserRepository userRepository;
 
 	@GetMapping(path = "/jam/all")
 	public String showAllJams(Model model) {
@@ -59,6 +69,7 @@ public class JamController {
 		}
 
 		//TODO read user from session
+		User user = loadUserFromAuthentication();
 		//add user as founder
 		
 		jamRepository.save(jam);
@@ -99,6 +110,7 @@ public class JamController {
 		
 		//TODO
 		//load user from session
+		User user = loadUserFromAuthentication();
 		//if user is already a participant, add "hide join button"
 		
 		model.addAttribute("comment", comment);
@@ -113,6 +125,7 @@ public class JamController {
 	public String joinJam(@PathVariable(name = "id", required = true) long id, Model model) {
 		//TODO
 		//read user from session
+		User user = loadUserFromAuthentication();
 		//if user == founder
 		//return "can't join your own jam session"
 		//if user is already a participant
@@ -123,10 +136,9 @@ public class JamController {
 
 	@PostMapping(path = "/jam/comment")
 	public String commentJam(@Valid Comment comment, BindingResult bresult) {
-		
-		java.util.Date utilDate = new java.util.Date();
-		java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-		comment.setDate(sqlDate);
+		DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+		Date dateTime = new Date();
+		comment.setDateTime(dateTime);
 		
 		Jam jam = comment.getJam();	
 		commentRepository.save(comment);
@@ -142,7 +154,9 @@ public class JamController {
 		model.addAttribute("jam", jam);
 		
 		//TODO read user from session
+		User user = loadUserFromAuthentication();
 		//if user == founder
+		
 		return "jam/delete";
 		//if user != founder; redirect403
 	}
@@ -164,6 +178,18 @@ public class JamController {
 		}
 		
 		return cities;
+	}
+	
+	private User loadUserFromAuthentication() {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if (!(authentication instanceof AnonymousAuthenticationToken)) {
+		    String currentUserName = authentication.getName();
+			User user = userRepository.findByUsername(currentUserName);
+			return user;
+		} else {
+			return null;
+		}
+		
 	}
 
 }

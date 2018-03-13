@@ -1,7 +1,6 @@
 package com.jammanager.entity;
 
 import java.sql.Date;
-import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -25,8 +24,7 @@ public class Jam {
 	private long id;
 
 	@Column(nullable = false)
-	private Date date;
-//	private Calendar time;
+    private Date date;
 
 	@Column(nullable = false)
 	private String place;

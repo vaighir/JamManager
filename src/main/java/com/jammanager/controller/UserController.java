@@ -5,13 +5,15 @@ import java.util.Collection;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jammanager.entity.City;
 import com.jammanager.entity.Instrument;
@@ -42,16 +44,22 @@ public class UserController {
 //		return "user/success";
 //	}
 	
-	@GetMapping(path = "/user/edit/")
-	public String edit(final @RequestParam(name = "id", required = true) long id, final Model model) {
+	@GetMapping(path = "/user/edit")
+	public String edit(Model model) {
+
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if (!(authentication instanceof AnonymousAuthenticationToken)) {
+		    String currentUserName = authentication.getName();
+			User user = userRepository.findByUsername(currentUserName);
+			model.addAttribute("user", user);
+			return "user/edit";
+		}
 		
-		User user = userRepository.findOne(id);
-		model.addAttribute("user", user);
-		return "user/edit";
+		return "user/login";
 	}
 	
 	@PostMapping(path = "/user/edit")
-	public String processEdit(final @Valid User user, final BindingResult bresult) {
+	public String processEdit(@Valid User user, BindingResult bresult) {
 		if(bresult.hasErrors()) {
 			return "user/edit";
 		}
@@ -73,6 +81,9 @@ public class UserController {
 	@GetMapping(path = "/user/logout")
 	public String logout() {
 		// TODO add logout functionality
+		
+		
+		
 		return "index/index";
 	}
 	
