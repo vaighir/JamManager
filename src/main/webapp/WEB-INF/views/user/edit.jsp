@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="f" uri="http://www.springframework.org/tags/form"%>
+<%@ include file="../header.jsp"%>
 
 <html>
 <head>
@@ -10,7 +11,7 @@
 </head>
 <body>
 	<h3>Edit user ${user.username }</h3>
-	<f:form id="login" action="edit" method="post">
+	<f:form id="login" action="edit" method="post" modelAttribute="user">
 		<div>
 			First name:
 			<f:input type="text" path="firstName" name="firstName" />
@@ -36,7 +37,8 @@
 			<f:errors path="instruments" cssClass="error" />
 		</div>
 		<div>
-			Change password: <input type="password" name="password" />
+			Current password <input type="password" name="oldPassword" /><br>
+			Change password: <input type="password" name="password" /><br> 
 			Confirm new password: <input type="password" name="password2" />
 		</div>
 		<div>
@@ -56,11 +58,12 @@
 		</div>
 		<%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> --%>
 	</f:form>
-	<script type="text/javascript"
-		src="<c:url value="/resources/js/jquery-3.3.1.min.js"/>"></script>
+	
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/jquery.validate.min.js"/>"></script>
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/user/edit.js"/>"></script>
+	<%@ include file="../footer.jsp"%>
+
 </body>
 </html>

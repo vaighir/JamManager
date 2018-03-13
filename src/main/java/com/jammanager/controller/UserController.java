@@ -70,6 +70,12 @@ public class UserController {
 		return "user/success";
 	}
 	
+	@GetMapping(path = "/user/logout")
+	public String logout() {
+		// TODO add logout functionality
+		return "index/index";
+	}
+	
 	@ModelAttribute("cities")
 	public Collection<City> cities() {
 		Collection<City> cities = cityRepository.findAll();

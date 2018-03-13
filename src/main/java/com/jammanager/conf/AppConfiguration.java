@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -21,6 +22,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+
+import com.jammanager.converter.InstrumentConverter;
 
 
 @Configuration
@@ -71,5 +74,15 @@ public class AppConfiguration extends WebMvcConfigurerAdapter {
 		registry
 			.addResourceHandler("/resources/**")
 			.addResourceLocations("/resources/");
+	}
+	
+	@Override
+	public void addFormatters(final FormatterRegistry registry) {
+		registry.addConverter(instrumentConverter());
+	}
+
+	@Bean
+	public InstrumentConverter instrumentConverter() {
+		return new InstrumentConverter();
 	}
 }

@@ -9,7 +9,12 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 @EnableWebSecurity
+//@EnableJpaRepositories(basePackageClasses = UserRepository.class)
+//@Configuration
 public class SecurityAppConfiguration extends WebSecurityConfigurerAdapter  {
+
+//@Autowired
+//private UserDetailsService userDetailsService;
 
 //	@Autowired
 //	private UserRepository userRepository;
@@ -33,6 +38,11 @@ public class SecurityAppConfiguration extends WebSecurityConfigurerAdapter  {
 		return manager;
 		
 	}
+	
+//	@Override
+//	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//		auth.userDetailsService(userDetailsService);
+//	}
 	
 	@Override
 	protected void configure(final HttpSecurity http) throws Exception {

@@ -21,7 +21,7 @@
     <h3><a href="${pageContext.request.contextPath}/user/signup">Sign up!</a></h3>
     <%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> --%>
   </form>
-  <script type="text/javascript" src="<c:url value="/resources/js/jquery-3.3.1.min.js"/>"></script>
+  <script type="text/javascript" src="<c:url value="/resources/js/jquery.validate.min.js"/>"></script>
   <script type="text/javascript" src="<c:url value="/resources/js/user/login.js"/>"></script>
 </body>
 </html>

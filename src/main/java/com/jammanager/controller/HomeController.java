@@ -12,12 +12,6 @@ public class HomeController {
 		return "index/index";
 	}
 
-	@GetMapping(path = "/logout")
-	public String logout() {
-		// TODO add logout functionality
-		return "index/index";
-	}
-
 	@GetMapping(path = "/error/403page")
 	public String page403() {
 		return "/error/403page";
