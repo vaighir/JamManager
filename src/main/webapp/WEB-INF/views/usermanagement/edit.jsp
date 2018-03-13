@@ -10,7 +10,7 @@
 </head>
 <body>
 	<h3>Edit user ${user.username }</h3>
-	<f:form action="edit" method="post" modelAttribute="user">
+	<f:form action="../edit" method="post" modelAttribute="user">
 		<div>
 			First name:
 			<f:input type="text" path="firstName" name="firstName" />
@@ -52,7 +52,11 @@
 			<f:input type="text" path="gg" name="gg" />
 		</div>
 		<div>
-			<input type="submit" value="Sign up" />
+			<f:input type="hidden" path="username" value="${user.username }" />
+		</div>
+			<f:hidden path="id"/>
+		<div>
+			<input type="submit" value="Save changes" />
 		</div>
 		<%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> --%>
 	</f:form>

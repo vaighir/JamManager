@@ -54,7 +54,7 @@
 			<f:input type="text" path="gg" name="gg" />
 		</div>
 		<div>
-			<input type="submit" value="Sign up" />
+			<input type="submit" value="Save changes" />
 		</div>
 		<%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> --%>
 	</f:form>

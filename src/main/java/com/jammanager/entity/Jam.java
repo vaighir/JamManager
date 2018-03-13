@@ -1,5 +1,6 @@
 package com.jammanager.entity;
 
+import java.sql.Date;
 import java.util.Calendar;
 import java.util.List;
 
@@ -24,7 +25,8 @@ public class Jam {
 	private long id;
 
 	@Column(nullable = false)
-	private Calendar time;
+	private Date date;
+//	private Calendar time;
 
 	@Column(nullable = false)
 	private String place;
@@ -58,12 +60,12 @@ public class Jam {
 		this.id = id;
 	}
 
-	public Calendar getTime() {
-		return time;
+	public Date getDate() {
+		return date;
 	}
 
-	public void setTime(Calendar time) {
-		this.time = time;
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	public String getPlace() {
@@ -82,13 +84,13 @@ public class Jam {
 		this.description = description;
 	}
 
-//	public List<String> getComments() {
-//		return comments;
-//	}
-//
-//	public void setComments(List<String> comments) {
-//		this.comments = comments;
-//	}
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
 
 	public User getFounder() {
 		return founder;
@@ -116,7 +118,7 @@ public class Jam {
 
 	@Override
 	public String toString() {
-		return "Jam [id=" + id + ", time=" + time + ", place=" + place + ", description=" + description + ", founder="
+		return "Jam [id=" + id + ", date=" + date + ", place=" + place + ", description=" + description + ", founder="
 				+ founder + ", city=" + city + ", users amount: " + users.size() + "]";
 	}
 	

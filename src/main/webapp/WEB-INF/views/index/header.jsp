@@ -18,8 +18,8 @@
 	      <a class="navbar-brand" href="${pageContext.request.contextPath}">JAM MANAGER</a>
 	    </div>
 	    <ul class="nav navbar-nav">
-	      <li><a href="${pageContext.request.contextPath}/usermanagement">User management</a></li>
-	      <li><a href="${pageContext.request.contextPath}/jam">Jams</a></li>
+	      <li><a href="${pageContext.request.contextPath}/usermanagement/all">User management</a></li>
+	      <li><a href="${pageContext.request.contextPath}/jam/all">Jams</a></li>
 	      <li><a href="${pageContext.request.contextPath}/city">Cities</a></li>
 	    </ul>
 	    <ul class="nav navbar-nav navbar-right">

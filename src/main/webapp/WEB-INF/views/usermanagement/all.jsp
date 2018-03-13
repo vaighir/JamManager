@@ -10,7 +10,7 @@
 <body>
 	<div class="row">
 		<div class="col-sm-2">
-			<%-- <%@ include file="sidebar.jsp"%> --%>
+			<%@ include file="sidebar.jsp"%>
 		</div>
 		<div class="col-sm-10">
 			<h2>Users list</h2>
@@ -28,13 +28,14 @@
 						<td>${user.username}</td>
 						<td>${user.city.name}</td>
 
-						<td><a href="<c:url value='${pageContext.request.contextPath}/usermanagement/details?id=${user.id}'/>">Details</a></td>
+						<td><a href="${pageContext.request.contextPath}/usermanagement/details/${user.id}">Details</a></td>
 						<td><a href="${pageContext.request.contextPath}/usermanagement/edit/${user.id}">Edit</a></td>
-						<td><a href="<c:url value='${pageContext.request.contextPath}/usermanagement/delete?id=${user.id}'/>">Delete</a></td>
+						<td><a href="${pageContext.request.contextPath}/usermanagement/delete/${user.id}">Delete</a></td>
 
 					</tr>
 				</c:forEach>
 			</table>
+  			<a  href="${pageContext.request.contextPath}/usermanagement/add">Add a new user</a>
 
 		</div>
 	</div>

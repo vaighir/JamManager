@@ -33,7 +33,7 @@ public class UserManagementController {
 	@Autowired
 	private InstrumentRepository instrumentRepository;
 	
-	@GetMapping(path = "/usermanagement")
+	@GetMapping(path = "/usermanagement/all")
 	public String showLoginForm(Model model) {
 		Collection<User> users = userRepository.findAll();
 		

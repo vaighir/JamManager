@@ -24,6 +24,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 import com.jammanager.converter.InstrumentConverter;
+import com.jammanager.converter.JamConverter;
 
 
 @Configuration
@@ -79,10 +80,16 @@ public class AppConfiguration extends WebMvcConfigurerAdapter {
 	@Override
 	public void addFormatters(final FormatterRegistry registry) {
 		registry.addConverter(instrumentConverter());
+		registry.addConverter(jamConverter());
 	}
 
 	@Bean
 	public InstrumentConverter instrumentConverter() {
 		return new InstrumentConverter();
+	}
+	
+	@Bean
+	public JamConverter jamConverter() {
+		return new JamConverter();
 	}
 }

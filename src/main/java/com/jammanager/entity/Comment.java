@@ -1,5 +1,6 @@
 package com.jammanager.entity;
 
+import java.sql.Date;
 import java.util.Calendar;
 
 import javax.persistence.Column;
@@ -19,7 +20,7 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	private Calendar time;
+	private Date date;
 	
     @Column(columnDefinition="TEXT")
 	private String text;
@@ -40,12 +41,12 @@ public class Comment {
 		this.id = id;
 	}
 
-	public Calendar getTime() {
-		return time;
+	public Date getDate() {
+		return date;
 	}
 
-	public void setTime(Calendar time) {
-		this.time = time;
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	public String getText() {
@@ -64,9 +65,17 @@ public class Comment {
 		this.user = user;
 	}
 
+	public Jam getJam() {
+		return jam;
+	}
+
+	public void setJam(Jam jam) {
+		this.jam = jam;
+	}
+
 	@Override
 	public String toString() {
-		return "Comment [id=" + id + ", time=" + time + ", text=" + text + ", user=" + user + "]";
+		return "Comment [id=" + id + ", time=" + date + ", text=" + text + ", user=" + user + "]";
 	}
 
     
