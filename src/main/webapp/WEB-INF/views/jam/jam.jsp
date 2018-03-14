@@ -28,21 +28,29 @@
 			<p>${jam.place }</p>
 
 			<h3>Founder</h3>
-			<p>${jam.founder.username }</p>
+			<p>
+				<span class="glyphicon glyphicon-user"></span>
+				${jam.founder.username }
+			</p>
 
 			<h3>Description</h3>
 			<p>${jam.description }</p>
 
 			<h3>Participants</h3>
-			<ul>
-				<li>${jam.founder.username }</li>
-				<c:forEach items="${users}" var="user">
 
-					<li>${user.username }</li>
+			<p>
+				<span class="glyphicon glyphicon-user"></span>
+				${jam.founder.username }
+			</p>
+			<c:forEach items="${users}" var="user">
 
-				</c:forEach>
-			</ul>
-			<f:form id="join" action="join" method="post" modelAttribute="jam">	
+				<p>
+					<span class="glyphicon glyphicon-user"></span> ${user.username }
+				</p>
+
+			</c:forEach>
+
+			<f:form id="join" action="join" method="post" modelAttribute="jam">
 				<f:hidden path="id" value="${jam.id}" />
 				<div>
 					<input type="submit" value="Join!" />

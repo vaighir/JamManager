@@ -25,7 +25,7 @@
 					<c:forEach items="${users}" var="user">
 						<tr>
 							<td>${user.username}</td>
-							<td><a
+							<td><a class="btn btn-default"
 								href="${pageContext.request.contextPath}/user/details/${user.id}">Details</a></td>
 							
 						</tr>

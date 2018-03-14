@@ -16,7 +16,7 @@
 		</div>
 		<div class="col-sm-10">
 			<h3>Edit user ${user.username }</h3>
-			<f:form action="../edit" method="post" modelAttribute="user">
+			<f:form action="../edit" method="post" modelAttribute="user" id="edit">
 				<div>
 					First name:
 					<f:input type="text" path="firstName" name="firstName" />
@@ -43,7 +43,7 @@
 				</div>
 				<div>
 					Change password: <input type="password" name="password" /> Confirm
-					new password: <input type="password" name="password2" />
+					new password: <input id="password" type="password" name="password2" />
 				</div>
 				<div>
 					WhatsApp:

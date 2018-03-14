@@ -26,7 +26,7 @@
 					<f:input type="email" path="email" />
 				</div>
 				<div>
-					Password: <input type="password" name="password" /> Repeat
+					Password: <input id="password" type="password" name="password" /> Repeat
 					password: <input type="password" name="password2" />
 				</div>
 				<div>

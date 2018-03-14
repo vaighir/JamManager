@@ -30,7 +30,8 @@ public class User {
 	@Column(nullable = false, unique = true)
 	private String username;
 	
-	private boolean enabled = true;
+//	@Column(columnDefinition="default 'true'")
+//	private boolean enabled = true;
 	
 	private String firstName;
 	private String lastName;
@@ -151,13 +152,13 @@ public class User {
 		return whatsapp;
 	}
 
-	public boolean isEnabled() {
-		return enabled;
-	}
-
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
-	}
+//	public boolean isEnabled() {
+//		return enabled;
+//	}
+//
+//	public void setEnabled(boolean enabled) {
+//		this.enabled = enabled;
+//	}
 	
 	public void setWhatsapp(String whatsapp) {
 		this.whatsapp = whatsapp;

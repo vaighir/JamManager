@@ -22,9 +22,9 @@
 				<div class="col-sm-4">
 				<br>
 					<form action="search" method="post">
-						Search:
+						<span class="glyphicon glyphicon-search"></span>
 						<input type="text" name=name />
-						<input type="submit" value="go!" />
+						<input type="submit" value="Search" />
 					</form>
 				</div>
 			</div>
@@ -42,10 +42,10 @@
 						<tr>
 							<td><b>${city.name}:</b></td>
 
-							<td><a
+							<td><a class="btn btn-default"
 								href="${pageContext.request.contextPath}/city/${city.id}/users">Users
 									in ${city.name }</a></td>
-							<td><a
+							<td><a class="btn btn-default"
 								href="${pageContext.request.contextPath}/city/${city.id}/jams">Jams
 									in ${city.name }</a></td>
 						</tr>

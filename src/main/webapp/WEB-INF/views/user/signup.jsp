@@ -17,7 +17,7 @@
 			<%@ include file="../sidebar.jsp"%>
 		</div>
 		<div class="col-sm-10">
-			<f:form id="login" action="signup" method="post"
+			<f:form id="signup" action="signup" method="post"
 				modelAttribute="user">
 				<div>
 					Username:

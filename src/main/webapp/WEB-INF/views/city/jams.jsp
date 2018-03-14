@@ -31,14 +31,14 @@
 							<td>${jam.date}</td>
 							<td>${jam.place}</td>
 
-							<td><a
+							<td><a class="btn btn-default"
 								href="${pageContext.request.contextPath}/jam/${jam.id}">Details</a></td>
 
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
-			<a href="${pageContext.request.contextPath}/jam/add">Add a new
+			<a  class="btn btn-default" href="${pageContext.request.contextPath}/jam/add">Add a new
 				jam</a>
 
 		</div>

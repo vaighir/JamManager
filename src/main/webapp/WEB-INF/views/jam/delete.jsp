@@ -21,7 +21,7 @@
 
 			<f:form action="../delete" method="post" modelAttribute="jam">
 				<f:hidden path="id" />
-				<input type="submit" value="Delete jam" />
+				<input class="btn btn-danger" type="submit" value="Delete jam" />
 			</f:form>
 			<f:form action="../all" method="get">
 				<input type="submit" value="Cancel" />

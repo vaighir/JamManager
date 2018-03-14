@@ -34,18 +34,18 @@
 							<td>${jam.city.name}</td>
 							<td>${jam.place}</td>
 
-							<td><a
+							<td><a class="btn btn-default"
 								href="${pageContext.request.contextPath}/jam/${jam.id}">Details</a></td>
-							<td><a
+							<td><a class="btn btn-default"
 								href="${pageContext.request.contextPath}/jam/edit/${jam.id}">Edit</a></td>
-							<td><a
+							<td><a class="btn btn-default"
 								href="${pageContext.request.contextPath}/jam/delete/${jam.id}">Delete</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
-			<a href="${pageContext.request.contextPath}/jam/add">Add a new
-				jam</a>
+			<a class="btn btn-default"
+				href="${pageContext.request.contextPath}/jam/add">Add a new jam</a>
 
 		</div>
 	</div>
