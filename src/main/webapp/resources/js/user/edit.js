@@ -1,7 +1,7 @@
 $(function() {
-	
+
 	$("form[id='edit'] input[name='username']").focus();
-	
+
 	$("form[id='edit']").validate({
 		rules : {
 			username : {
@@ -12,6 +12,16 @@ $(function() {
 			},
 			password2 : {
 				equalTo : "#password"
+			},
+			whatsapp : {
+				minlength : 5,
+				maxlength : 15,
+				digits : true
+			},
+			gg : {
+				minlength : 5,
+				maxlength : 15,
+				digits : true
 			}
 		},
 		messages : {
@@ -23,6 +33,16 @@ $(function() {
 			},
 			password2 : {
 				equalTo : "Passwords must match!"
+			},
+			whatsapp : {
+				minlength : "Must be longer than 5 characters!",
+				maxlength : "Cannot be longer than 15 characters!",
+				digits : "Must be digits only!"
+			},
+			gg : {
+				minlength : "Must be longer than 5 characters!",
+				maxlength : "Cannot be longer than 15 characters!",
+				digits : "Must be digits only!"
 			}
 		},
 		submitHandler : function(form) {
