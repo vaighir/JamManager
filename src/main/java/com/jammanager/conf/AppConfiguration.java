@@ -8,6 +8,7 @@ import javax.validation.Validator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -30,7 +31,7 @@ import com.jammanager.service.UserAuthenticationHelper;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan(basePackages = { "com.jammanager.entity", "com.jammanager.controller" })
+@ComponentScan(basePackages = { "com.jammanager" })
 @EnableWebMvc
 @EnableJpaRepositories(basePackages = "com.jammanager.repository")
 public class AppConfiguration extends WebMvcConfigurerAdapter {

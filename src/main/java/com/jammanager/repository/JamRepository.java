@@ -10,7 +10,7 @@ import com.jammanager.entity.User;
 
 public interface JamRepository extends JpaRepository<Jam, Long> {
 
-	@Query("SELECT j FROM Jam j ORDER BY j.date desc")
+	@Query("SELECT j FROM Jam j ORDER BY j.date")
 	Collection<Jam> findAllSortByDate();
 	
 	Collection<Jam> findAllByCityId(long id);

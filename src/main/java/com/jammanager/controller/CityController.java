@@ -1,5 +1,6 @@
 package com.jammanager.controller;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import com.jammanager.entity.User;
 import com.jammanager.repository.CityRepository;
 import com.jammanager.repository.JamRepository;
 import com.jammanager.repository.UserRepository;
+import com.jammanager.service.UserAuthenticationHelper;
 
 @Controller
 public class CityController {
@@ -28,8 +30,8 @@ public class CityController {
 	@Autowired
 	private CityRepository cityRepository;
 	
-//	@Autowired
-//	private UserAuthenticationHelper uah;
+	@Autowired
+	private UserAuthenticationHelper uah;
 	
 	@GetMapping(path = "/city")
 	public String redirect() {
@@ -39,7 +41,7 @@ public class CityController {
 	
 	@GetMapping(path = "/city/all")
 	public String showAllCities(Model model) {
-		Collection<City> cities = this.cityRepository.findAll();
+		Collection<City> cities = this.cityRepository.allByName();
 
 		model.addAttribute("cities", cities);
 		return "city/all";
@@ -53,13 +55,16 @@ public class CityController {
 		return "city/all";
 	}
 	
-//	@GetMapping(path = "city/mycity")
-//	public String showMyCity(Model model) {
-//		User user = uah.loadUserFromAuthentication();
-//		City city = this.cityRepository.findOneByUser(user);
-//		model.addAttribute("city", city);
-//		return "city/all";
-//	}
+	@GetMapping(path = "city/mycity")
+	public String showMyCity(Model model) {
+		User user = uah.loadUserFromAuthentication();
+		
+		City city = user.getCity();
+		Collection<City> cities = new ArrayList<City>();
+		cities.add(city);
+		model.addAttribute("cities", cities);
+		return "city/all";
+	}
 	
 	
 	@GetMapping(path = "/city/{id}/users")

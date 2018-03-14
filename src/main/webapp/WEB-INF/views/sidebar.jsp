@@ -4,18 +4,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
 </head>
 <body>
-	<nav class="navbar navbar-inverse vertical-navbars sidebar">
+	<nav class="navbar navbar-default sidebar" role="navigation">
 	<div class="container-fluid">
 
 		<ul class="nav navbar-btn   ">
 			<li class="active"><a href="${pageContext.request.contextPath}">Home</a></li>
 			<li><a href="${pageContext.request.contextPath}/jam/myjam">My
-					jam</a></li>
-			<li><a href="#">Page 2</a></li>
-			<li><a href="#">Page 3</a></li>
+					jams</a></li>
+			<li><a href="${pageContext.request.contextPath}/city/mycity">My city</a></li>
 		</ul>
 	</div>
 	</nav>

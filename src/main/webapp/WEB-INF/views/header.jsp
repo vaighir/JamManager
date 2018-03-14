@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+
 <link rel="stylesheet" type="text/css"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css"
@@ -31,9 +31,9 @@
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="${pageContext.request.contextPath}/user/edit"><span
-						class="glyphicon glyphicon-user"></span>Edit account</a></li>
+						class="glyphicon glyphicon-user"></span> Edit account</a></li>
 				<li><a href="<c:url value="/logout" />"><span
-						class="glyphicon glyphicon-log-out"></span>Log out</a></li>
+						class="glyphicon glyphicon-log-out"></span> Log out</a></li>
 			</ul>
 		</div>
 	</nav>
