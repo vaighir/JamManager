@@ -13,7 +13,7 @@
 			<%@ include file="../sidebar.jsp"%>
 		</div>
 		<div class="col-sm-10">
-			<h2>Users list</h2>
+			<h2>List of users</h2>
 			<table class="table table-hover">
 				<thead class="thead-inverse">
 					<tr>
@@ -30,18 +30,18 @@
 							<td>${user.username}</td>
 							<td>${user.city.name}</td>
 
-							<td><a
+							<td><a class="btn btn-default"
 								href="${pageContext.request.contextPath}/user/details/${user.id}">Details</a></td>
-							<td><a
+							<td><a class="btn btn-default"
 								href="${pageContext.request.contextPath}/usermanagement/edit/${user.id}">Edit</a></td>
-							<td><a
+							<td><a class="btn btn-default"
 								href="${pageContext.request.contextPath}/usermanagement/delete/${user.id}">Delete</a></td>
 
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
-			<a href="${pageContext.request.contextPath}/usermanagement/add">Add
+			<a  class="btn btn-default" href="${pageContext.request.contextPath}/usermanagement/add">Add
 				a new user</a>
 
 		</div>

@@ -13,10 +13,10 @@ $(function() {
 		},
 		messages : {
 			username : {
-				required : "Nie podałeś loginu"
+				required : "Username cannot be empty!"
 			},
 			password : {
-				required : "Nie podałeś hasła"
+				required : "Password cannot be empty!"
 			}
 		},
 		submitHandler : function(form) {

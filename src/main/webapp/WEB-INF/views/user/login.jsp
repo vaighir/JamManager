@@ -25,11 +25,11 @@
 					<input type="submit" value="Log in" />
 				</div>
 				<p>Not a user yet?</p>
-				<h3>
-					<a href="${pageContext.request.contextPath}/user/signup">Sign
-						up!</a>
-				</h3>
+
 				<%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> --%>
+			</form>
+			<form action="${pageContext.request.contextPath}/user/signup">
+				<button type="submit">Sign up!</button>
 			</form>
 		</div>
 	</div>

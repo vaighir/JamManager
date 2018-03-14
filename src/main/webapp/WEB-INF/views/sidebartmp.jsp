@@ -15,7 +15,7 @@
 	<nav class="navbar navbar-inverse vertical-navbars sidebar">
 	  <div class="container-fluid">
 	    
-	    <ul class="nav navbar-btn   ">
+	    <ul class="nav navbar-btn">
 	      <li class="active"><a href="${pageContext.request.contextPath}">Home</a></li>
 	      <li><a href="${pageContext.request.contextPath}/jam/myjam">My jam</a></li>
 	      <li><a href="#">Page 2</a></li>

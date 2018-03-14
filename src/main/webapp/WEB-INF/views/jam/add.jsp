@@ -16,14 +16,14 @@
 			<%@ include file="../sidebar.jsp"%>
 		</div>
 		<div class="col-sm-10">
-			<f:form id="login" action="add" method="post" modelAttribute="jam">
+			<f:form id="add" action="add" method="post" modelAttribute="jam">
 				<div>
 					Date:
 					<f:input path="date" type="date" name="date" />
 				</div>
 				<div>
 					City:
-					<f:select path="city.id" items="${cities}" itemLabel="name"
+					<f:select path="city.id" items="${cities}" itemLabel="name" name="city"
 						itemValue="id" />
 					<f:errors path="city" cssClass="error" />
 				</div>
