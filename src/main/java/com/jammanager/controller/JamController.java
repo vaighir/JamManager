@@ -42,7 +42,7 @@ public class JamController {
 
 	@GetMapping(path = "/jam/all")
 	public String showAllJams(Model model) {
-		Collection<Jam> jams = jamRepository.findAll();
+		Collection<Jam> jams = jamRepository.findAllSortByDate();
 
 		model.addAttribute("jams", jams);
 		return "jam/all";
@@ -105,7 +105,7 @@ public class JamController {
 	@GetMapping(path = "/jam/{id}")
 	public String showJam(@PathVariable(name = "id", required = true) long id, Model model) {
 		Jam jam = jamRepository.findOne(id);
-		Collection<Comment> comments = commentRepository.findAllByJam(jam);
+		Collection<Comment> comments = commentRepository.findAllByJamOrderByDateTime(jam);
 		User founder = jam.getFounder();
 		Collection<User> participants = jam.getUsers();
 		Comment comment = new Comment();
