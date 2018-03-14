@@ -1,7 +1,7 @@
 $(function() {
 	
 	
-	$("form[id='add']").validate({
+	$("form[id='edit']").validate({
 		rules : {
 			date : {
 				required : true

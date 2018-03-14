@@ -16,7 +16,7 @@
 		</div>
 		<div class="col-sm-10">
 			<h3>Edit user ${user.username }</h3>
-			<f:form id="login" action="edit" method="post" modelAttribute="user">
+			<f:form id="edit" action="edit" method="post" modelAttribute="user">
 				<div>
 					First name:
 					<f:input type="text" path="firstName" name="firstName" />
