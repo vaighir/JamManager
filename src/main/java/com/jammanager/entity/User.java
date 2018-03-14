@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
 
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -39,8 +40,12 @@ public class User {
 	private String password;
 	
 	private String avatar;
+	
+	@Pattern(regexp = "^\\d+$")
 	private String whatsapp;
 	private String fb;
+	
+	@Pattern(regexp = "^\\d+$")
 	private String gg;
 	
 	@ManyToOne
@@ -82,6 +87,14 @@ public class User {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public List<Jam> getFoundedJams() {
+		return foundedJams;
+	}
+
+	public void setFoundedJams(List<Jam> foundedJams) {
+		this.foundedJams = foundedJams;
 	}
 
 	public String getUsername() {

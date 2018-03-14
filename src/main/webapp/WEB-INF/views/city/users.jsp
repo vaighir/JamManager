@@ -19,7 +19,6 @@
 					<tr>
 						<th>Username</th>
 						<th>Details</th>
-						<th>Jams</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -27,16 +26,12 @@
 						<tr>
 							<td>${user.username}</td>
 							<td><a
-								href="${pageContext.request.contextPath}/usermanagement/details/${user.id}">Details</a></td>
-							<td><a
-								href="${pageContext.request.contextPath}/usermanagement/jam/${user.id}">Jams</a></td>
+								href="${pageContext.request.contextPath}/user/details/${user.id}">Details</a></td>
+							
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
-			<a href="${pageContext.request.contextPath}/usermanagement/add">Add
-				a new user</a>
-
 		</div>
 	</div>
 

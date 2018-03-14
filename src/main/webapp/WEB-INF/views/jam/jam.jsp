@@ -42,7 +42,12 @@
 
 				</c:forEach>
 			</ul>
-			<a href="">Join!</a>
+			<f:form id="join" action="join" method="post" modelAttribute="jam">	
+				<f:hidden path="id" value="${jam.id}" />
+				<div>
+					<input type="submit" value="Join!" />
+				</div>
+			</f:form>
 
 
 			<h3>Leave a comment</h3>
@@ -68,7 +73,10 @@
 						<td>${comment.text }</td>
 					</tr>
 					<tr>
-						<td>${comment.user.username }</td>
+						<td><i>${comment.user.username }</i></td>
+					</tr>
+					<tr>
+						<td><hr></td>
 					</tr>
 				</table>
 			</c:forEach>

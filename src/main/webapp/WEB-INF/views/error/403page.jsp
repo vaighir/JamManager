@@ -7,6 +7,7 @@
 </head>
 <body>
   <h2>Access denied</h2>
-  <img src="https://cdn.pixabay.com/photo/2016/05/15/04/13/area-closed-1393118_640.jpg" />
+  <a href="${pageContext.request.contextPath}">Return to index</a><br>
+  <img src="resources/img/acces-denied.jpg" />
 </body>
 </html>

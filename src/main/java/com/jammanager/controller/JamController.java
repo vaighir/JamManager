@@ -1,15 +1,12 @@
 package com.jammanager.controller;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,7 +23,7 @@ import com.jammanager.entity.User;
 import com.jammanager.repository.CityRepository;
 import com.jammanager.repository.CommentRepository;
 import com.jammanager.repository.JamRepository;
-import com.jammanager.repository.UserRepository;
+import com.jammanager.service.UserAuthenticationHelper;
 
 @Controller
 public class JamController {
@@ -39,13 +36,22 @@ public class JamController {
 
 	@Autowired
 	private CityRepository cityRepository;
-
+	
 	@Autowired
-	private UserRepository userRepository;
+	private UserAuthenticationHelper uah;
 
 	@GetMapping(path = "/jam/all")
 	public String showAllJams(Model model) {
 		Collection<Jam> jams = jamRepository.findAll();
+
+		model.addAttribute("jams", jams);
+		return "jam/all";
+	}
+	
+	@GetMapping(path = "/jam/myjam")
+	public String showMyJam(Model model) {
+		User user = uah.loadUserFromAuthentication();
+		Collection<Jam> jams = jamRepository.findAllByFounder(user);
 
 		model.addAttribute("jams", jams);
 		return "jam/all";
@@ -67,7 +73,7 @@ public class JamController {
 			return "jam/add";
 		}
 
-		User user = loadUserFromAuthentication();
+		User user = uah.loadUserFromAuthentication();
 		jam.setFounder(user);
 		jamRepository.save(jam);
 
@@ -105,7 +111,7 @@ public class JamController {
 		Comment comment = new Comment();
 		comment.setJam(jam);
 
-		User user = loadUserFromAuthentication();
+		User user = uah.loadUserFromAuthentication();
 		List<User> users = jam.getUsers();
 
 		for (User u : users) {
@@ -114,54 +120,50 @@ public class JamController {
 				model.addAttribute("msg", msg);
 			}
 		}
-		
+
 		model.addAttribute("comment", comment);
 		model.addAttribute("founder", founder);
 		model.addAttribute("participants", participants);
 		model.addAttribute("comments", comments);
+		model.addAttribute("users", users);
 		model.addAttribute("jam", jam);
-		
+
 		return "jam/jam";
 	}
 
-	@PostMapping(path = "/jam/{id}/join")
-	public String joinJam(@PathVariable(name = "id", required = true) long id, Model model) {
+	@PostMapping(path = "/jam/join")
+	public String joinJam(Jam jam, Model model) {
 
-		Jam jam = jamRepository.findOne(id);
-		User user = loadUserFromAuthentication();
-
-		if (user == jam.getFounder()) {
+		User user = uah.loadUserFromAuthentication();
+		long jamId = jam.getId();
+		
+		Jam newJam = jamRepository.getOne(jamId);
+		if (user == newJam.getFounder()) {
 			String msg = "You cannot join your own jam session";
 			model.addAttribute("msg", msg);
 			return "error/custom";
 		}
 
-		List<User> users = jam.getUsers();
+		List<User> users = newJam.getUsers();
 
-		for (User u : users) {
-			if (u.equals(user)) {
-				String msg = "You've already joined this jam";
-				model.addAttribute("msg", msg);
-				return "error/custom";
+		if (users != null) {
+			
+
+			for (User u : users) {
+				if (u.getId() == user.getId()) {
+					String msg = "You've already joined this jam";
+					model.addAttribute("msg", msg);
+					return "error/custom";
+				}
 			}
+		} else {
+			users = new ArrayList<User>();
 		}
-
+		
 		users.add(user);
-		jam.setUsers(users);
-		return "redirect:../jam/" + id;
-	}
-
-	@PostMapping(path = "/jam/comment")
-	public String commentJam(@Valid Comment comment, BindingResult bresult) {
-		Date dateTime = new Date();
-		User user = loadUserFromAuthentication();
-		comment.setUser(user);
-		comment.setDateTime(dateTime);
-
-		Jam jam = comment.getJam();
-		commentRepository.save(comment);
-
-		return "redirect:../jam/" + jam.getId();
+		newJam.setUsers(users);
+		jamRepository.save(newJam);
+		return "redirect:../jam/" + newJam.getId();
 	}
 
 	@GetMapping(path = "/jam/delete/{id}")
@@ -170,7 +172,7 @@ public class JamController {
 		Jam jam = jamRepository.findOne(id);
 		model.addAttribute("jam", jam);
 
-		User user = loadUserFromAuthentication();
+		User user = uah.loadUserFromAuthentication();
 		if (user == jam.getFounder()) {
 			return "jam/delete";
 		} else {
@@ -179,7 +181,7 @@ public class JamController {
 	}
 
 	@PostMapping(path = "jam/delete")
-	public String deleteJam(final @RequestParam(name = "id", required = true) long id) {
+	public String deleteJam(@RequestParam(name = "id", required = true) long id) {
 
 		jamRepository.delete(id);
 		return "redirect:all";
@@ -196,16 +198,6 @@ public class JamController {
 		return cities;
 	}
 
-	private User loadUserFromAuthentication() {
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		if (!(authentication instanceof AnonymousAuthenticationToken)) {
-			String currentUserName = authentication.getName();
-			User user = userRepository.findByUsername(currentUserName);
-			return user;
-		} else {
-			return null;
-		}
-
-	}
+	
 
 }

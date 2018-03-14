@@ -13,7 +13,7 @@
 	    
 	    <ul class="nav navbar-btn   ">
 	      <li class="active"><a href="${pageContext.request.contextPath}">Home</a></li>
-	      <li><a href="#">Page 1</a></li>
+	      <li><a href="${pageContext.request.contextPath}/jam/myjam">My jam</a></li>
 	      <li><a href="#">Page 2</a></li>
 	      <li><a href="#">Page 3</a></li>
 	    </ul>

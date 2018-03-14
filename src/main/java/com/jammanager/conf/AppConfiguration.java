@@ -25,6 +25,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 import com.jammanager.converter.InstrumentConverter;
 import com.jammanager.converter.JamConverter;
+import com.jammanager.service.UserAuthenticationHelper;
 
 
 @Configuration
@@ -68,6 +69,12 @@ public class AppConfiguration extends WebMvcConfigurerAdapter {
 	@Bean
 	public Validator validator() {
 		return new LocalValidatorFactoryBean();
+	}
+	
+	@Bean
+	public UserAuthenticationHelper userAuthenticationHelper() {
+		final UserAuthenticationHelper uah = new UserAuthenticationHelper();
+		return uah;
 	}
 
 	@Override

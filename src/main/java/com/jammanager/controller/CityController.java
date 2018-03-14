@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jammanager.entity.City;
 import com.jammanager.entity.Jam;
@@ -26,6 +28,9 @@ public class CityController {
 	@Autowired
 	private CityRepository cityRepository;
 	
+//	@Autowired
+//	private UserAuthenticationHelper uah;
+	
 	@GetMapping(path = "/city")
 	public String redirect() {
 		
@@ -34,16 +39,33 @@ public class CityController {
 	
 	@GetMapping(path = "/city/all")
 	public String showAllCities(Model model) {
-		Collection<City> cities = cityRepository.findAll();
+		Collection<City> cities = this.cityRepository.findAll();
 
 		model.addAttribute("cities", cities);
 		return "city/all";
 	}
 	
+	@PostMapping(path = "/city/search")
+	public String showFoundCities(@RequestParam(name = "name", required = true) String name, Model model) {
+		Collection<City> cities = this.cityRepository.searchByName(name);
+
+		model.addAttribute("cities", cities);
+		return "city/all";
+	}
+	
+//	@GetMapping(path = "city/mycity")
+//	public String showMyCity(Model model) {
+//		User user = uah.loadUserFromAuthentication();
+//		City city = this.cityRepository.findOneByUser(user);
+//		model.addAttribute("city", city);
+//		return "city/all";
+//	}
+	
+	
 	@GetMapping(path = "/city/{id}/users")
-	public String showUsersOfACity(@PathVariable(name = "id", required = true) long id,Model model) {
+	public String showUsersOfACity(@PathVariable(name = "id", required = true) long id, Model model) {
 		City city = cityRepository.findOne(id);
-		Collection<User> users = userRepository.findAllByCityId(id);
+		Collection<User> users = this.userRepository.findAllByCityId(id);
 		
 		model.addAttribute("users", users);
 		model.addAttribute("city", city);
@@ -51,9 +73,9 @@ public class CityController {
 	}
 	
 	@GetMapping(path = "/city/{id}/jams")
-	public String showJamsOfACity(@PathVariable(name = "id", required = true) long id,Model model) {
+	public String showJamsOfACity(@PathVariable(name = "id", required = true) long id, Model model) {
 		City city = cityRepository.findOne(id);
-		Collection<Jam> jams = jamRepository.findAllByCityId(id);
+		Collection<Jam> jams = this.jamRepository.findAllByCityId(id);
 		
 		model.addAttribute("jams", jams);
 		model.addAttribute("city", city);

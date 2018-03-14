@@ -20,8 +20,7 @@
 			<h5>Welcome to Jam manager! On this website you can find
 				like-minded musicians in your area to jam together. You have to log
 				in to user this website.</h5>
-
-			<img src="/resources/img/music.jpg" />
+			<img src="<c:url value="resources/img/music.jpg" />" />
 			
 
 		</div>

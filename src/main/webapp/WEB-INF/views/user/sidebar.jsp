@@ -12,8 +12,8 @@
 	  <div class="container-fluid">
 	    
 	    <ul class="nav navbar-btn   ">
-	      <li class="active"><a href="#">Home</a></li>
-	      <li><a href="${pageContext.request.contextPath}/city/mycity">My city</a></li>
+	      <li class="active"><a href="${pageContext.request.contextPath}">Home</a></li>
+	      <li><a href="#">Page 1</a></li>
 	      <li><a href="#">Page 2</a></li>
 	      <li><a href="#">Page 3</a></li>
 	    </ul>

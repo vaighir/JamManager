@@ -15,7 +15,20 @@
 			<%@ include file="sidebar.jsp"%>
 		</div>
 		<div class="col-sm-10">
-			<h2>Cities</h2>
+			<div class="row">
+				<div class="col-sm-3">
+					<h2>Cities</h2>
+				</div>
+				<div class="col-sm-4">
+				<br>
+					<form action="search" method="post">
+						Search:
+						<input type="text" name=name />
+						<input type="submit" value="go!" />
+					</form>
+				</div>
+			</div>
+
 			<table class="table table-hover">
 				<thead class="thead-inverse">
 					<tr>
@@ -30,9 +43,11 @@
 							<td><b>${city.name}:</b></td>
 
 							<td><a
-								href="${pageContext.request.contextPath}/city/${city.id}/users">Users in ${city.name }</a></td>
+								href="${pageContext.request.contextPath}/city/${city.id}/users">Users
+									in ${city.name }</a></td>
 							<td><a
-								href="${pageContext.request.contextPath}/city/${city.id}/jams">Jams in ${city.name }</a></td>
+								href="${pageContext.request.contextPath}/city/${city.id}/jams">Jams
+									in ${city.name }</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>

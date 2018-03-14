@@ -38,7 +38,7 @@
 		</div>
 		<div>
 			Current password <input type="password" name="oldPassword" /><br>
-			Change password: <input type="password" name="password" /><br> 
+			Change password: <input type="password" name="password" /><br>
 			Confirm new password: <input type="password" name="password2" />
 		</div>
 		<div>
@@ -53,12 +53,14 @@
 			GG:
 			<f:input type="text" path="gg" name="gg" />
 		</div>
+		<f:input type="hidden" path="username" value="${user.username }" />
+		<f:hidden path="id" />
 		<div>
 			<input type="submit" value="Save changes" />
 		</div>
 		<%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> --%>
 	</f:form>
-	
+
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/jquery.validate.min.js"/>"></script>
 	<script type="text/javascript"

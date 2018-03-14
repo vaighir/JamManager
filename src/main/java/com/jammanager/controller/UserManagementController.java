@@ -41,8 +41,8 @@ public class UserManagementController {
 		return "usermanagement/all";
 	}
 	
-	@GetMapping(path = "/usermanagement/delete")
-	public String showDeleteConfirmForm(@RequestParam(name = "id", required = true) long id, Model model) {
+	@GetMapping(path = "/usermanagement/delete/{id}")
+	public String showDeleteConfirmForm(@PathVariable(name = "id", required = true) long id, Model model) {
 				
 		User user = userRepository.findOne(id);
 		
@@ -84,7 +84,7 @@ public class UserManagementController {
 	public String showEditForm(@PathVariable(name = "id", required = true) long id, Model model) {
 
 		User user = userRepository.findOne(id);
-		user.getCity().getJams();		
+//		user.getCity().getJams();		
 		
 		model.addAttribute("user", user);
 		return "usermanagement/edit";

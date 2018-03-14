@@ -32,4 +32,10 @@ insert into users_roles(user_id, role_id) value(1, 1);
 insert into users_roles(user_id, role_id) value(2, 2);
 insert into users_roles(user_id, role_id) value(3, 2);
 
+insert into jams(date, description, place, city_id, founder_id) value("2018-04-15", "sample description", "wzgórze partyzantów", 2, 2);
+insert into jams(date, description, place, city_id, founder_id) value("2018-05-11", "sample description", "pafawak", 2, 2);
+insert into jams(date, description, place, city_id, founder_id) value("2018-03-30", "sample description", "zwinger", 10, 3);
+insert into jams(date, description, place, city_id, founder_id) value("2018-04-05", "sample description", "dom", 10, 2);
+
+
 

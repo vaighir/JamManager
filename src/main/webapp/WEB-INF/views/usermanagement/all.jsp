@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ include file="../index/header.jsp"%>
+<%@ include file="../header.jsp"%>
 
 <html>
 <head>
@@ -31,7 +31,7 @@
 							<td>${user.city.name}</td>
 
 							<td><a
-								href="${pageContext.request.contextPath}/usermanagement/details/${user.id}">Details</a></td>
+								href="${pageContext.request.contextPath}/user/details/${user.id}">Details</a></td>
 							<td><a
 								href="${pageContext.request.contextPath}/usermanagement/edit/${user.id}">Edit</a></td>
 							<td><a

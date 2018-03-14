@@ -7,5 +7,6 @@
 </head>
 <body>
   <h2>${msg }</h2>
+    <a href="${pageContext.request.contextPath}">Return to index</a>
 </body>
 </html>

@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="f" uri="http://www.springframework.org/tags/form"%>
+<%@ include file="../header.jsp"%>
 
 <html>
 <head>
@@ -51,10 +52,9 @@
 			GG:
 			<f:input type="text" path="gg" name="gg" />
 		</div>
-		<div>
-			<f:input type="hidden" path="username" value="${user.username }" />
-		</div>
-			<f:hidden path="id"/>
+		
+		<f:input type="hidden" path="username" value="${user.username }" />
+		<f:hidden path="id" />
 		<div>
 			<input type="submit" value="Save changes" />
 		</div>
