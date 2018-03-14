@@ -21,4 +21,6 @@ public class HomeController {
 	public String page404() {
 		return "/error/404page";
 	}
+	
+	
 }

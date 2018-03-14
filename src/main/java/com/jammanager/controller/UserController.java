@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.jammanager.entity.City;
 import com.jammanager.entity.Instrument;
@@ -37,8 +38,10 @@ public class UserController {
 	private UserAuthenticationHelper uah;
 	
 	@GetMapping(path = "/user/login")
-	public String showLoginForm() {
-		return "user/login";
+	public ModelAndView showLoginForm() {
+		ModelAndView model = new ModelAndView();
+        model.setViewName("user/login");
+        return model;
 	}
 	
 	@GetMapping(path = "/user/edit")
