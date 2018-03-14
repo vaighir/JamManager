@@ -9,22 +9,30 @@
 <link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>" />
 </head>
 <body>
-	<form id="login" action="login" method="post">
-		<div>
-			Username: <input type="text" name="username" />
+	<div class="row">
+		<div class="col-sm-2">
+			<%@ include file="../sidebar.jsp"%>
 		</div>
-		<div>
-			Password: <input type="password" name="password" />
+		<div class="col-sm-10">
+			<form id="login" action="login" method="post">
+				<div>
+					Username: <input type="text" name="username" />
+				</div>
+				<div>
+					Password: <input type="password" name="password" />
+				</div>
+				<div>
+					<input type="submit" value="Log in" />
+				</div>
+				<p>Not a user yet?</p>
+				<h3>
+					<a href="${pageContext.request.contextPath}/user/signup">Sign
+						up!</a>
+				</h3>
+				<%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> --%>
+			</form>
 		</div>
-		<div>
-			<input type="submit" value="Log in" />
-		</div>
-		<p>Not a user yet?</p>
-		<h3>
-			<a href="${pageContext.request.contextPath}/user/signup">Sign up!</a>
-		</h3>
-		<%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> --%>
-	</form>
+	</div>
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/jquery.validate.min.js"/>"></script>
 	<script type="text/javascript"

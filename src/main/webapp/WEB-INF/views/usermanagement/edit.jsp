@@ -10,58 +10,63 @@
 <link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>" />
 </head>
 <body>
-	<h3>Edit user ${user.username }</h3>
-	<f:form action="../edit" method="post" modelAttribute="user">
-		<div>
-			First name:
-			<f:input type="text" path="firstName" name="firstName" />
+	<div class="row">
+		<div class="col-sm-2">
+			<%@ include file="../sidebar.jsp"%>
 		</div>
-		<div>
-			Last name:
-			<f:input type="text" path="lastName" name="lastName" />
+		<div class="col-sm-10">
+			<h3>Edit user ${user.username }</h3>
+			<f:form action="../edit" method="post" modelAttribute="user">
+				<div>
+					First name:
+					<f:input type="text" path="firstName" name="firstName" />
+				</div>
+				<div>
+					Last name:
+					<f:input type="text" path="lastName" name="lastName" />
+				</div>
+				<div>
+					Email:
+					<f:input type="email" path="email" name="email" />
+				</div>
+				<div>
+					City:
+					<f:select path="city.id" items="${cities}" itemLabel="name"
+						itemValue="id" />
+					<f:errors path="city" cssClass="error" />
+				</div>
+				<div>
+					Instruments:
+					<f:select path="instruments" items="${instruments}" multiple="true"
+						itemLabel="name" itemValue="id" />
+					<f:errors path="instruments" cssClass="error" />
+				</div>
+				<div>
+					Change password: <input type="password" name="password" /> Confirm
+					new password: <input type="password" name="password2" />
+				</div>
+				<div>
+					WhatsApp:
+					<f:input type="text" path="whatsapp" name="whatsapp" />
+				</div>
+				<div>
+					Facebook:
+					<f:input type="text" path="fb" name="fb" />
+				</div>
+				<div>
+					GG:
+					<f:input type="text" path="gg" name="gg" />
+				</div>
+
+				<f:input type="hidden" path="username" value="${user.username }" />
+				<f:hidden path="id" />
+				<div>
+					<input type="submit" value="Save changes" />
+				</div>
+				<%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> --%>
+			</f:form>
 		</div>
-		<div>
-			Email:
-			<f:input type="email" path="email" name="email" />
-		</div>
-		<div>
-			City:
-			<f:select path="city.id" items="${cities}" itemLabel="name"
-				itemValue="id" />
-			<f:errors path="city" cssClass="error" />
-		</div>
-		<div>
-			Instruments:
-			<f:select path="instruments" items="${instruments}" multiple="true"
-				itemLabel="name" itemValue="id" />
-			<f:errors path="instruments" cssClass="error" />
-		</div>
-		<div>
-			Change password: <input type="password" name="password" /> Confirm
-			new password: <input type="password" name="password2" />
-		</div>
-		<div>
-			WhatsApp:
-			<f:input type="text" path="whatsapp" name="whatsapp" />
-		</div>
-		<div>
-			Facebook:
-			<f:input type="text" path="fb" name="fb" />
-		</div>
-		<div>
-			GG:
-			<f:input type="text" path="gg" name="gg" />
-		</div>
-		
-		<f:input type="hidden" path="username" value="${user.username }" />
-		<f:hidden path="id" />
-		<div>
-			<input type="submit" value="Save changes" />
-		</div>
-		<%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> --%>
-	</f:form>
-	<script type="text/javascript"
-		src="<c:url value="/resources/js/jquery-3.3.1.min.js"/>"></script>
+	</div>
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/jquery.validate.min.js"/>"></script>
 	<script type="text/javascript"

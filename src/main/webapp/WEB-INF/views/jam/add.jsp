@@ -11,30 +11,38 @@
 <link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>" />
 </head>
 <body>
-	<f:form id="login" action="add" method="post" modelAttribute="jam">
-		<div>
-			Date:
-			<f:input path="date" type="date" name="date" />
+	<div class="row">
+		<div class="col-sm-2">
+			<%@ include file="../sidebar.jsp"%>
 		</div>
-		<div>
-			City:
-			<f:select path="city.id" items="${cities}" itemLabel="name"
-				itemValue="id" />
-			<f:errors path="city" cssClass="error" />
+		<div class="col-sm-10">
+			<f:form id="login" action="add" method="post" modelAttribute="jam">
+				<div>
+					Date:
+					<f:input path="date" type="date" name="date" />
+				</div>
+				<div>
+					City:
+					<f:select path="city.id" items="${cities}" itemLabel="name"
+						itemValue="id" />
+					<f:errors path="city" cssClass="error" />
+				</div>
+				<div>
+					Place:
+					<f:input type="text" path="place" name="place" />
+				</div>
+				<div>
+					Description:
+					<f:textarea path="description" name="description" cols="30"
+						rows="4" />
+				</div>
+				<div>
+					<input type="submit" value="Add a new jam" />
+				</div>
+				<%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> --%>
+			</f:form>
 		</div>
-		<div>
-			Place:
-			<f:input type="text" path="place" name="place" />
-		</div>
-		<div>
-			Description:
-			<f:textarea path="description" name="description" cols="30" rows="4" />
-		</div>
-		<div>
-			<input type="submit" value="Add a new jam" />
-		</div>
-		<%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> --%>
-	</f:form>
+	</div>
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/jquery.validate.min.js"/>"></script>
 	<script type="text/javascript"
