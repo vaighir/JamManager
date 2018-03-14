@@ -15,7 +15,7 @@
 		<div class="col-sm-2">
 			<%@ include file="../sidebar.jsp"%>
 		</div>
-		<div class="col-sm-10">
+		<div class="col-sm-10 container">
 			<h2>Delete user</h2>
 			<p>Are you sure you want to delete user ${user.username }? This action is irreversible</p>
 

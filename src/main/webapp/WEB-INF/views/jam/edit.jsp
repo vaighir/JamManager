@@ -15,7 +15,7 @@
 		<div class="col-sm-2">
 			<%@ include file="../sidebar.jsp"%>
 		</div>
-		<div class="col-sm-10">
+		<div class="col-sm-10 container">
 			<f:form id="edit" action="../edit" method="post" modelAttribute="jam">
 				<div>
 					Date:

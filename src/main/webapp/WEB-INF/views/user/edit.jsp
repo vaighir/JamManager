@@ -14,7 +14,7 @@
 		<div class="col-sm-2">
 			<%@ include file="../sidebar.jsp"%>
 		</div>
-		<div class="col-sm-10">
+		<div class="col-sm-10 container">
 			<h3>Edit user ${user.username }</h3>
 			<f:form id="edit" action="edit" method="post" modelAttribute="user">
 				<div>

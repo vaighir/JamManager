@@ -15,7 +15,7 @@
 		<div class="col-sm-2">
 			<%@ include file="../sidebar.jsp"%>
 		</div>
-		<div class="col-sm-10">
+		<div class="col-sm-10 container">
 			<h2>Delete jam</h2>
 			<p>Are you sure you want to delete this jam? This action is irreversible</p>
 

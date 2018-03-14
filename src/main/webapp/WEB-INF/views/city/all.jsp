@@ -10,11 +10,11 @@
 </head>
 <body>
 
-	<div class="row">
+	<div class="row row-eq-height">
 		<div class="col-sm-2">
 			<%@ include file="../sidebar.jsp"%>
 		</div>
-		<div class="col-sm-10">
+		<div class="col-sm-10 container">
 			<div class="row">
 				<div class="col-sm-3">
 					<h2>Cities</h2>

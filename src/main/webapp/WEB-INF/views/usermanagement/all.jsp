@@ -12,7 +12,7 @@
 		<div class="col-sm-2">
 			<%@ include file="../sidebar.jsp"%>
 		</div>
-		<div class="col-sm-10">
+		<div class="col-sm-10 container">
 			<h2>List of users</h2>
 			<table class="table table-hover">
 				<thead class="thead-inverse">

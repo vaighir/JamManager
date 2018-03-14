@@ -27,7 +27,7 @@ insert into cities(name) values ("Praha");
 
 insert into users(email, password, username) values ("mail@mail.com", "$2a$10$3MwtgSz7jyfi/wswE.2SVulISTVigAwzcW1DRsB3OCvY6H8qi9/Yi", "admin");
 insert into users(email, password, username, city_id) values ("user1@mail.com", "$2a$10$3MwtgSz7jyfi/wswE.2SVulISTVigAwzcW1DRsB3OCvY6H8qi9/Yi", "bad_influence", 2);
-insert into users(email, password, username, city_id) values ("user2@mail.com", "$2a$10$3MwtgSz7jyfi/wswE.2SVulISTVigAwzcW1DRsB3OCvY6H8qi9/Yi", "satan", 2);
+insert into users(email, password, username, city_id) values ("user2@mail.com", "password", "satan", 2);
 insert into users(email, password, username, city_id) values ("user3@mail.com", "$2a$10$3MwtgSz7jyfi/wswE.2SVulISTVigAwzcW1DRsB3OCvY6H8qi9/Yi", "metal4eva", 4);
 insert into users(email, password, username, city_id) values ("user4@mail.com", "$2a$10$3MwtgSz7jyfi/wswE.2SVulISTVigAwzcW1DRsB3OCvY6H8qi9/Yi", "bestbeat", 4);
 

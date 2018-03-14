@@ -10,10 +10,13 @@
 	<div class="container-fluid">
 
 		<ul class="nav navbar-btn   ">
-			<li class="active"><a href="${pageContext.request.contextPath}">Home</a></li>
-			<li><a href="${pageContext.request.contextPath}/jam/myjam">My
+			<li class="active"><a class="black-link" href="${pageContext.request.contextPath}">Home</a></li>
+			<li><a class="black-link" href="${pageContext.request.contextPath}/jam/myjam">My
 					jams</a></li>
-			<li><a href="${pageContext.request.contextPath}/city/mycity">My city</a></li>
+			<li><a class="black-link" href="${pageContext.request.contextPath}/city/mycity">My
+					city</a></li>
+			<li><a class="black-link" href="${pageContext.request.contextPath}/about">About</a></li>
+			<li><a class="black-link" href="${pageContext.request.contextPath}/contact">Contact</a></li>
 		</ul>
 	</div>
 	</nav>

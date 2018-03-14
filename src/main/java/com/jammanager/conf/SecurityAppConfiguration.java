@@ -7,8 +7,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
@@ -47,6 +45,8 @@ public class SecurityAppConfiguration extends WebSecurityConfigurerAdapter  {
 			.authorizeRequests()
 				.antMatchers("/resources/**").permitAll()
 				.antMatchers("/").permitAll()
+				.antMatchers("/about").permitAll()
+				.antMatchers("/contact").permitAll()
 				.antMatchers("/user/signup").permitAll()
 				.antMatchers("/usermanagement/**").hasRole("ADMIN")
 				.antMatchers("/jam/**").hasAnyRole("ADMIN", "USER") 
@@ -69,7 +69,7 @@ public class SecurityAppConfiguration extends WebSecurityConfigurerAdapter  {
 //	public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
 //		DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
 //		driverManagerDataSource.setDriverClassName("com.mysql.jdbc.Driver");
-//		driverManagerDataSource.setUrl("jdbc:mysql://localhost:3306/jam&useSSL=false");
+//		driverManagerDataSource.setUrl("jdbc:mysql://localhost:3306/jam?useSSL=false");
 //		driverManagerDataSource.setUsername("root");
 //		driverManagerDataSource.setPassword("coderslab");
 //		
@@ -80,9 +80,9 @@ public class SecurityAppConfiguration extends WebSecurityConfigurerAdapter  {
 //		
 //		auth.userDetailsService(jdbcImpl).passwordEncoder(passwordencoder());
 //	}
-
-	@Bean(name = "passwordEncoder")
-	public PasswordEncoder passwordencoder() {
-		return new BCryptPasswordEncoder();
-	}
+//
+//	@Bean(name = "passwordEncoder")
+//	public PasswordEncoder passwordencoder() {
+//		return new BCryptPasswordEncoder();
+//	}
 }

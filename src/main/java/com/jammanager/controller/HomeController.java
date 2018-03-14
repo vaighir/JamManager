@@ -8,7 +8,6 @@ public class HomeController {
 
 	@GetMapping(path = "/")
 	public String index() {
-
 		return "index/index";
 	}
 
@@ -22,5 +21,14 @@ public class HomeController {
 		return "/error/404page";
 	}
 	
+	@GetMapping(path = "/about")
+	public String about() {
+		return "index/about";
+	}
+	
+	@GetMapping(path = "/contact")
+	public String contact() {
+		return "index/contact";
+	}
 	
 }

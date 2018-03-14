@@ -9,6 +9,16 @@
 	float: right;
 }
 
+.black-link {
+	color: black;
+}
+
 ul {
     list-style-type: none;
+}
+
+.container {
+    background-image: url("../img/music.jpg");
+    background-repeat: no-repeat;
+    background-size: 98% 98%;
 }

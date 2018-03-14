@@ -16,7 +16,7 @@
 		<div class="col-sm-2">
 			<%@ include file="../sidebar.jsp"%>
 		</div>
-		<div class="col-sm-10">
+		<div class="col-sm-10 container">
 			<h1>Jam session</h1>
 			<h3>Date</h3>
 			<p>${jam.date }</p>

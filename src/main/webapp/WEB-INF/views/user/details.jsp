@@ -15,7 +15,7 @@
 		<div class="col-sm-2">
 			<%@ include file="../sidebar.jsp"%>
 		</div>
-		<div class="col-sm-10">
+		<div class="col-sm-10 container">
 			<h1>User ${user.username }</h1>
 			<h3>Name</h3>
 			<p>${user.firstName }${user.lastName }</p>

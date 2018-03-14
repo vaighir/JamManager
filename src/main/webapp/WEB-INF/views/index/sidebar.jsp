@@ -8,19 +8,16 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-inverse vertical-navbars sidebar">
+	<nav class="navbar navbar-default sidebar" role="navigation">
 	  <div class="container-fluid">
 	    
 	    <ul class="nav navbar-btn   ">
-	      <li class="active"><a href="#">Home</a></li>
-	      <li><a href="#">Page 1</a></li>
-	      <li><a href="#">Page 2</a></li>
-	      <li><a href="#">Page 3</a></li>
+	      <li class="active"><a class="black-link" href="${pageContext.request.contextPath}">Home</a></li>
+	      <li><a class="black-link" href="${pageContext.request.contextPath}/about">About</a></li>
+	      <li><a class="black-link" href="${pageContext.request.contextPath}/contact">Contact</a></li>
 	    </ul>
 	  </div>
 	</nav>
 	
-	
-
 </body>
 </html>

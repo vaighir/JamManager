@@ -13,7 +13,7 @@
 		<div class="col-sm-2">
 			<%@ include file="../sidebar.jsp"%>
 		</div>
-		<div class="col-sm-10">
+		<div class="col-sm-10 container">
 			<form id="login" action="login" method="post">
 				<div>
 					Username: <input type="text" name="username" />
