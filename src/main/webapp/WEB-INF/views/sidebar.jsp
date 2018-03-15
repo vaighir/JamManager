@@ -15,6 +15,8 @@
 					jams</a></li>
 			<li><a class="black-link" href="${pageContext.request.contextPath}/city/mycity">My
 					city</a></li>
+			<li><a class="black-link" href="${pageContext.request.contextPath}/jam/archive">Past
+					jams</a></li>		
 			<li><a class="black-link" href="${pageContext.request.contextPath}/about">About</a></li>
 			<li><a class="black-link" href="${pageContext.request.contextPath}/contact">Contact</a></li>
 		</ul>

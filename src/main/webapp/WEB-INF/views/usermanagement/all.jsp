@@ -13,7 +13,16 @@
 			<%@ include file="../sidebar.jsp"%>
 		</div>
 		<div class="col-sm-10 container">
-			<h2>List of users</h2>
+			<div class="col-sm-3">
+				<h2>Users</h2>
+			</div>
+			<div class="col-sm-4">
+				<br>
+				<form action="search" method="post">
+					<span class="glyphicon glyphicon-search"></span> <input type="text"
+						name=name /> <input type="submit" value="Search" />
+				</form>
+			</div>
 			<table class="table table-hover">
 				<thead class="thead-inverse">
 					<tr>
@@ -41,7 +50,8 @@
 					</c:forEach>
 				</tbody>
 			</table>
-			<a  class="btn btn-default" href="${pageContext.request.contextPath}/usermanagement/add">Add
+			<a class="btn btn-default"
+				href="${pageContext.request.contextPath}/usermanagement/add">Add
 				a new user</a>
 
 		</div>

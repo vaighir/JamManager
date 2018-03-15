@@ -41,6 +41,15 @@ public class UserManagementController {
 		return "usermanagement/all";
 	}
 	
+
+	@PostMapping(path = "/usermanagement/search")
+	public String showFoundUsers(@RequestParam(name = "name", required = true) String name, Model model) {
+		Collection<User> users = this.userRepository.searchByUsername(name);
+
+		model.addAttribute("users", users);
+		return "usermanagement/all";
+	}
+	
 	@GetMapping(path = "/usermanagement/delete/{id}")
 	public String showDeleteConfirmForm(@PathVariable(name = "id", required = true) long id, Model model) {
 				

@@ -58,6 +58,31 @@ public class JamController {
 		return "jam/all";
 	}
 	
+	@GetMapping(path = "/jam/archive")
+	public String showPastJams(Model model) {
+		Collection<Jam> jamsTmp = jamRepository.findAllSortByDateDesc();
+		Collection<Jam> jams = new ArrayList<Jam>();
+		Date now = new Date();
+		for (Jam jam : jamsTmp) {
+			Date date = jam.getDate();
+			if (date.getTime() < now.getTime()) {
+				jams.add(jam);
+			}
+		}
+		
+		model.addAttribute("jams", jams);
+		return "jam/all";
+	}
+	
+	
+	@PostMapping(path = "/jam/searchByCity")
+	public String showFoundCities(@RequestParam(name = "name", required = true) String name, Model model) {
+		Collection<Jam> jams = this.jamRepository.findAllByCityName(name);
+
+		model.addAttribute("jams", jams);
+		return "jam/all";
+	}
+	
 	@GetMapping(path = "/jam/myjam")
 	public String showMyJam(Model model) {
 		User user = uah.loadUserFromAuthentication();

@@ -16,4 +16,10 @@ public interface JamRepository extends JpaRepository<Jam, Long> {
 	Collection<Jam> findAllByCityId(long id);
 
 	Collection<Jam> findAllByFounder(User founder);
+
+	@Query("SELECT j FROM Jam j ORDER BY j.date desc")
+	Collection<Jam> findAllSortByDateDesc();
+	
+	@Query("SELECT j FROM Jam j where j.city.name like %?1%")
+	Collection<Jam> findAllByCityName(String name);
 }
