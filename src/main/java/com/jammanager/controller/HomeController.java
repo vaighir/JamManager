@@ -30,5 +30,4 @@ public class HomeController {
 	public String contact() {
 		return "index/contact";
 	}
-	
 }

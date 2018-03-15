@@ -15,13 +15,21 @@
 			<%@ include file="sidebar.jsp"%>
 		</div>
 		<div class="col-sm-10 container">
-			
+			<h1>Contact details</h1>
+			<h3>Why do you want to contact the author?</h3>
+			<h4>The app is not working properly</h4>
+			<p>It's the servers fault. Do not disturb the author.</p>
+			<h4>I can't log in</h4>
+			<p>You're typing in the password wrong. Do not disturb the author.</p>
+			<h4>I can't sign up</h4>
+			<p>You're probably not cool enough. Do not disturb the author.</p>
+			<h4>This app is so amazing I just have to hire the author!</h4>
+			<p>You have to contact the author!!! You'll find more details on my <a href="https://github.com/vaighir">github</a></p>
 
 		</div>
 	</div>
 
 	<%@ include file="../footer.jsp"%>
-
-
+	
 </body>
 </html>

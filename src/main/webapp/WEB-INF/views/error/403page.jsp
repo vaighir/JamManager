@@ -8,6 +8,6 @@
 <body>
   <h2>Access denied</h2>
   <a href="${pageContext.request.contextPath}">Return to index</a><br>
-  <img src="resources/img/acces-denied.jpg" />
+			<img src="<c:url value="resources/img/access-denied.jpg" />" />
 </body>
 </html>

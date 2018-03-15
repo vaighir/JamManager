@@ -16,7 +16,8 @@
 		</div>
 		<div class="col-sm-10 container">
 			
-			
+			<h1>About author</h1>
+			<p>This is my <a href="https://github.com/vaighir">github</a></p>
 
 		</div>
 	</div>

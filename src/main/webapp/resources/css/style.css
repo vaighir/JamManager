@@ -20,5 +20,5 @@ ul {
 .container {
     background-image: url("../img/music.jpg");
     background-repeat: no-repeat;
-    background-size: 98% 98%;
+    background-size: 98% 800px;
 }
