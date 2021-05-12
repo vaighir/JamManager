@@ -8,7 +8,7 @@
 
 	<properties>
 		<springframework.version>4.3.8.RELEASE</springframework.version>
-		<spring-security.version>4.2.4.RELEASE</spring-security.version>
+		<spring-security.version>5.2.10.RELEASE</spring-security.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
